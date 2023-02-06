@@ -4,7 +4,8 @@
     top: 130px;
     left: 7vw;
 }
-.filter_btn{
+
+.filter_btn {
     visibility: hidden;
 }
 
@@ -19,8 +20,9 @@
     padding: 10px;
 
 }
-.crossIcon{
-    visibility: hidden;
+
+.crossIcon {
+    display: none;
 }
 
 #search {
@@ -51,6 +53,7 @@
     background: rgb(0, 0, 0);
     border-radius: 5px;
 }
+
 .language_checkbox {
     margin-top: 25px;
     /* border: 1px solid red; */
@@ -380,7 +383,7 @@
 @media(max-width:450px) {
 
 
-    .card{
+    .card {
         width: 275px;
         margin: 0px auto;
     }
@@ -406,7 +409,8 @@
 
 
     }
-    .crossIcon{
+
+    .crossIcon {
         visibility: visible;
         position: absolute;
         top: 1rem;
@@ -425,15 +429,15 @@
         font-size: 0.8rem;
     }
 
-    
+
     .all_profiles_div {
 
         width: 76vw;
-         left: 12vw;
-         margin-top: 8px;
-         /* border: 1px solid red; */
+        left: 12vw;
+        margin-top: 8px;
+        /* border: 1px solid red; */
         /* right: 7vw; */
-        
+
 
     }
 
@@ -445,17 +449,18 @@
         background-color: white;
         left: 5vw;
         top: 12rem;
-       
-       
+
+
         border-radius: 10px;
-       
+
 
     }
-    .filtericon{
+
+    .filtericon {
         height: 12px;
         width: 12px;
         margin-right: 4px;
-        color:  rgb(190, 52, 85);
+        color: rgb(190, 52, 85);
     }
 
     #filters {
@@ -490,10 +495,11 @@
     .search_icon {
         top: 7px;
         right: 6px;
-        
-        
+
+
     }
-    #search_Icon{
+
+    #search_Icon {
         height: 14px;
         width: 14px;
     }
@@ -506,21 +512,22 @@
     }
 
     .citySearch {
-       height: 2rem;
-       width: 90%;
+        height: 2rem;
+        width: 90%;
         padding-left: 35px;
         position: relative;
         left: -20px;
         top: 5px;
-      
+
     }
+
     .nodatafound {
 
         position: absolute;
         top: 15rem;
         right: 6rem;
         font-size: 0.8rem;
-    
+
     }
 
     .load_more {
@@ -546,9 +553,9 @@
         font-size: 0.95rem;
     }
 
-   
 
-   
+
+
 
     #filters>h3 {
         font-size: 0.85rem;
@@ -556,54 +563,54 @@
 
 
 
-   
-    
+
+
     .influencer_checkbox::-webkit-scrollbar {
         width: 4px;
     }
-    
+
     .influencer_checkbox::-webkit-scrollbar-track {
         background: #dcdbdb;
         border-radius: 10px;
     }
-    
+
     .influencer_checkbox::-webkit-scrollbar-thumb {
         background: rgb(0, 0, 0);
         border-radius: 5px;
     }
-    
-    
+
+
     .language_checkbox::-webkit-scrollbar {
         width: 4px;
     }
-    
+
     .language_checkbox::-webkit-scrollbar-track {
         background: #dcdbdb;
         border-radius: 10px;
     }
-    
+
     .language_checkbox::-webkit-scrollbar-thumb {
         background: rgb(0, 0, 0);
         border-radius: 5px;
     }
-    
-    
-    
-    
+
+
+
+
     .industry_checkbox::-webkit-scrollbar {
         width: 4px;
     }
-    
+
     .industry_checkbox::-webkit-scrollbar-track {
         background: #dcdbdb;
         border-radius: 10px;
-    
+
     }
-    
+
     .industry_checkbox::-webkit-scrollbar-thumb {
         background: rgb(0, 0, 0);
         border-radius: 5px;
-    
+
     }
 
 }

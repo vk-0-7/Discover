@@ -943,7 +943,7 @@ const registration = () => {
 
             <div className={styles.services_price} id={styles.last}>
               <label for="social_media">
-                <b id={styles.mark}>Service starting price</b>
+                <b id={styles.mark} >Service starting price</b>
               </label>
               <br />
               {servicecount.map((elem,index) => (

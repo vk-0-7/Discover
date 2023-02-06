@@ -5,18 +5,23 @@ import { useState, useEffect } from "react";
 import styles from "../styles/forgotpassword.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { setRevalidateHeaders } from "next/dist/server/send-payload";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const forgetpassword = ({ showForgotPassword, setShowForgotPassword,showemailsent,setemailsent }) => {
 
     const router=useRouter();
-  
+    const [btnloader,setBtnloader] =useState(false)
+    const [color,setColor] =useState("#ffffff")
+    const [verified,setVerified] =useState(false)
+   
  
 
   // submitting the button
  var emailfound=false;
   const handlesubmit = async () => {
     // console.log(email)
+    if(verified)
+{    setBtnloader(true)
     try {
       const res = await axios.get(
         "https://backend.discoverinfluencer.in/user/all"
@@ -35,11 +40,9 @@ const forgetpassword = ({ showForgotPassword, setShowForgotPassword,showemailsen
         
         emailfound=true;
       }
+      
     });
-
-
-
-     //if email is already present then post the api of forgotPassword
+ //if email is already present then post the api of forgotPassword
  
     //  console.log(abc);
 
@@ -68,6 +71,8 @@ setShowForgotPassword(false)
 //if the email is not present just send a message
 } else {
 document.getElementById("messagetext").style.display = "block";
+setBtnloader(false)
+}
 }
   
 }
@@ -89,9 +94,14 @@ document.getElementById("messagetext").style.display = "block";
     //email validation
       
   useEffect(() => {
-    if (email && email.includes("@"))
-      document.getElementById("sendmail").style.backgroundColor =
-        " rgb(190, 52, 85)";
+    if (email && email.includes("@")){
+      document.getElementById("sendmail").style.backgroundColor = " rgb(190, 52, 85)"
+        setVerified(true)
+        }
+        else{
+          document.getElementById("sendmail").style.backgroundColor = " rgba(190, 52, 85,0.2)"
+          setVerified(false)
+        }
   }, [email]);
   //   console.log(emailfound)
 
@@ -141,7 +151,14 @@ document.getElementById("messagetext").style.display = "block";
 
             <div className={styles.btn}>
               <button id="sendmail" onClick={handlesubmit}>
-                Submit
+              { btnloader ?  <ClipLoader
+        color={color}
+        loading={btnloader}
+        // cssOverride={override}
+        size={25}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      /> : <span> Submit</span>}
               </button>
             </div>
           </div>

@@ -136,7 +136,7 @@
     left: 9rem;
    visibility: hidden;
     margin-left: 8px;
-    height: 38px;
+    height: 38px; 
     width: 100px;
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
@@ -523,32 +523,161 @@
 
 
     .main_div{
-        padding: 20px;
+        padding: 15px;
         height: max-content;
         width: 100vw;
-        border: 1px solid black;
+        /* border: 1px solid black; */
         position: absolute;
         top: 100px;
-        /* left: 5vw; */
+        left: 0vw;
        
     }
    
     .main_heading{
         
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         margin-bottom: 25px;
     }
-    .info_profileimg > h4{
-        font-size: 1.3rem;
+    .info_profileimg  p{
+        font-size: 0.9rem;
         margin-bottom: 8px;
     }
-    .info_profileimg > h6{
-        font-size: 0.95rem;
+    .usericon{
+        height: 30px;
        
-        font-style: normal;
-        font-weight: 300;
-        margin-bottom: 20px;
+     }
+     .form{
+        
+        margin-top: 20px;
+        
+       
+    }
+     .icn{
+         height: 80px;
+         width: 80px;
+       
+        
+       
+     
+     }
+     
+     .icn figure{
+         /* border: 1px solid black; */
+         height: 100%;
+         width: 100%;
+         border: none;
+     }
+      .image{
+         height: 100%;
+         width: 100%;
+         border-radius: 55%;
+         object-fit: cover;
+         background-size: cover;
+         border: none;
+         /* background-color: #F0F0F0; */
+     }
+     
+     .file_upload{
+         /* border: 1px solid red; */
+         width: max-content;
+         height: 100px;
+     }
+     
+     .file_upload > input[type="file"]{
+         opacity:0;
+         z-index: 1000;
+         position: relative;
+         top: 25px;
+         width: 35%;
+         left: 10px;
+       font-size: 1.1rem;
+     }
+     .usericn{
+         position: relative;
+         bottom: 58px;
+         left: 24px;
+         height: 30px;
+         width: 30px;
+         z-index: -1;
+     }
+     #mark{
+        font-size: 0.8rem;
+        margin-left: 5px;
+        font-weight: normal;
+       
+        color:#292D32;
+    }
+     
+     .file_btn{
+         padding-block: 8px;
+         margin-left: 8px;
+         
+        
+         font-size: 0.9rem;
+      
+     }
+     .file_btn2{
+         position: relative;
+         bottom: 35px;
+      
+         margin-inline: 8px;
+         padding-inline: 10px;
+         padding-block: 12px;
+        
+         font-size: 0.8rem;
+      
+     }
+     .file_btn3{
+        
+         bottom: 72px;
+         left: 9rem;
+        
+         margin-left: 8px;
+         height: 38px; 
+         width: 100px;
+       
+         font-size: 0.8rem;
+      
+     }
+     .number_main{
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+    .mobile_checkbox{
+        line-height: 14px;
+        padding-top: 15px;
+      margin-left: 0px;
+      /* border: 1px solid fuchsia; */
+    }
+    .email_main{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    .email_checkbox{
+        line-height: 15px;
+     padding-top: 15px;
+      margin-left: 0px;
+      /* border: 1px solid rebeccapurple; */
+    }
     
+    .email_checkbox h6 ,.mobile_checkbox h6{
+        margin-left: 15px;
+        margin-top: 5px;
+        color: grey;
+        font-size: 0.7rem;
+        
+        font-style: normal;
+        font-weight: lighter;
+    }
+    .email_checkbox p ,.mobile_checkbox p{
+        margin-left: 4px;
+        font-size: 0.85rem;
+        
+    }
+    #ckbx{
+        display: flex;
     }
     
 
@@ -556,8 +685,9 @@
 #dropdown{
     margin-top: 12px;
     margin-left: 2px;
-    width: 90%;
-    border: 1px solid red;
+    width: 96%;
+    /* border: 1px solid red; */
+   
 }
 
 #select{
@@ -567,23 +697,50 @@
 }
 #select select {
     width: 92.5% !important;
-    
+    background-color: white;
     /* border: 1px solid rgb(30, 183, 27); */
+    height: 45px;
 }
 #register{
-    width:90%;
+    width:100%;
     /* border: 1px solid red; */
     margin-top: 8px;
     padding: 5px;
 }
 
 .state_city{
-    width:90%;
+    width:96%;
     /* border: 1px solid red; */
     margin-top: 8px;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    
+}
+.state{
+    width: 48%;
+}
+.city{
+    width: 52%;
+}
+
+.allstates{
+    width: 100%;
+    /* border: 1px solid green; */
+}
+.allcities{
+    width: 100%;
+    /* border: 1px solid green; */
+}
+
+#select_city , #select_state{
+    height: 45px;
+    width: 100%;
+    border: 2px solid #F0F0F0;
+    border-radius: 12px;
+    padding-left: 10px;
+    font-size: 0.8rem;
+   background-color: white;
+    margin: 4px 10px 0px 3px;
 }
 #inpt{
     height: 45px;
@@ -595,16 +752,32 @@
     margin-top: 4px;
     
 }
+
+.agency_btn button{
+   
+    height: 45px;
+    width:43%;
+   
+}
 .social_media{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap:nowrap;
     margin-top: 12px;
     /* border: 1px solid red; */
-    width: 90%;
+    width: 96%;
 }
+.all_media{
+    width: 98%;
+    /* border: 1px solid red; */
+}
+.media{
+    width: 50%;
+    /* width: 3px solid black; */
+}
+
 .medialink input{
     height: 45px;
-    width: 220px;
+    width: 84%;
     border: 2px solid #F0F0F0;
     border-radius: 12px;
     padding-inline: 10px;
@@ -614,22 +787,30 @@
 .services_body{
     display: flex;
     margin-top: 4px;
-    flex-wrap: wrap;
-    width: 90%;
+    flex-wrap: nowrap;
+    width: 96%;
     /* border: 1px solid red; */
 
+}
+
+#last{
+    width: 100%;
+    /* border: 1px solid green; */
 }
    
     #last input ,#last select{
        
-        width: 110px;
-        border: 2px solid #F0F0F0;
+        width: 70%;
+        /* border: 2px solid #ae3737; */
         border-radius: 12px;
         padding-left: 10px;
         font-size: 0.8rem;
         margin-right: 12px;
         margin-left: 3px;
         margin-top: 4px;
+    }
+    #last b{
+        font-size: 0.63rem;
     }
 
     .terms_and_condition{
@@ -647,8 +828,8 @@
     .create_profile{
    
         height: 40px;
-        width: 200px;
-        margin: 10px 0px 50px 30px;
+        width: 90vw;
+        margin: 10px 0px 40px 3px;
     }
     .create_profile button{
         height: 100%;

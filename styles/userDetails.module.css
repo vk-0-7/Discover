@@ -118,7 +118,31 @@ position: absolute;
     top: 140px;
     right: 13vw;
 }
-
+.editprofile{
+    height: max-content;
+    height: 4.5rem;
+    width: 80%;
+    margin-block: 15px;
+    
+    border: 0.3px solid rgba(218, 210, 210,0.6);
+    border-radius: 17px;
+    padding: 10px;
+    background-color: white;
+}
+.editprofile >button{
+    height: 100%;
+    width: 100%;
+    background-color:  rgb(190, 52, 85);
+    border: none;
+    border-radius: 13px;
+    /* margin-top: 5px;
+    margin-left: 9px; */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 
 
 .name{
@@ -146,16 +170,16 @@ position: absolute;
     width: fit-content;
 }
 .icons > button{
-    height: 30px;
-    width: 30px;
+    height: 33px;
+    width: 33px;
     margin: 5px;
     border-radius: 10px;
     border: 0.3px solid rgba(202, 192, 192,0.3);
     cursor: pointer;
 }
 #ic{
-    height: 45%;
-    width: 45%;
+    height: 55%;
+    width: 55%;
     color: rgb(190, 52, 85);
 }
 

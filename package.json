@@ -30,6 +30,7 @@
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.6.1",
     "react-slick": "^0.29.0",
+    "react-spinners": "^0.13.8",
     "slick-carousel": "^1.8.1",
     "uuidv4": "^6.2.13"
   }
