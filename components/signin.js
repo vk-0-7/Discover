@@ -1,7 +1,7 @@
    import styles from "../styles/signin.module.css";
    import {useState,useEffect} from "react";
    import { useSelector, useDispatch } from "react-redux";
-   import { setEmail, setPassword } from "../pages/redux/userSlice";
+   import { setEmail, setPassword } from "../redux/userSlice";
    import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
    import { faXmark } from '@fortawesome/free-solid-svg-icons'
    import {useRouter} from 'next/router'
