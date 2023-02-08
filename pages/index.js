@@ -98,7 +98,7 @@ function SecondPrevArrow(props) {
 
 const index = () => {
 
-  const { globalState, setGlobalState } = useContext(MyContext)
+  
 
   // const changeplaceholder=()=>{
   //   var items = Array("buy milk","purchase the new iPhone","test","hello");

@@ -422,7 +422,7 @@ position: absolute;
             border: 0.3px solid rgba(218, 210, 210,0.6);
             border-radius: 17px;
             padding: 5px;
-            background-color: white;
+            background-color: #ffffff;
         }
       
         
@@ -619,6 +619,9 @@ position: absolute;
        margin-top: 2px;
         
     }
-    
+    /* .footer{
+        position: absolute;
+        bottom: -25rem;
+    } */
     
     }

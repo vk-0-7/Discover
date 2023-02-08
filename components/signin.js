@@ -1,20 +1,24 @@
    import styles from "../styles/signin.module.css";
    import {useState,useEffect} from "react";
+   import { useSelector, useDispatch } from "react-redux";
+   import { setEmail, setPassword } from "../pages/redux/userSlice";
    import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
    import { faXmark } from '@fortawesome/free-solid-svg-icons'
-   import Forgetpassword from "./forgetpassword";
+   import {useRouter} from 'next/router'
    import Link from "next/link"
    import Script from "next/script";
    import Head from "next/head";
+   import ClipLoader from "react-spinners/ClipLoader";
    
 import axios from "axios";
 import React from "react";
   
 const signin = ({show,set,showsignup,setsignup,showForgotPassword,setShowForgotPassword}) => { 
 
-
-  
-
+ const router=useRouter();
+  const dispatch = useDispatch();
+const [btnloader,setBtnLoader] =useState(false)
+const [color,setColor] =useState("#ffffff")
 const [user, setUser] = useState({
   email:"",
   password:""
@@ -41,17 +45,23 @@ const handlechange=(e)=>{
     const LOGIN_API='https://backend.discoverinfluencer.in/user/login'
 
     const login= async ()=>{
-
+        
+      const {email,password}=user;
+      dispatch(setEmail(email))
+      dispatch(setPassword(password))
        
 
-        const {email,password}=user;
         
-        if(email && password){
+        if(email && password ){
+          setBtnLoader(true) 
           try {
              await axios.post(LOGIN_API,user)
+             router.push('/Dashboard')
 
           } catch (error) {
             console.log("Error during Login",error.message)
+            setBtnLoader(false)
+            document.getElementById("messagetext").style.display = "block";
           }
         }
     }
@@ -84,7 +94,24 @@ const handlechange=(e)=>{
         <p onClick={()=>{handlecross() ;setShowForgotPassword(true)}} className={styles.forgetPassword} > Forgot password? </p>
             
          
-           <button className={styles.login_btn} id='loginbtn' onClick={login} >Login</button>
+           <button className={styles.login_btn} id='loginbtn' onClick={login} > { btnloader ?  <ClipLoader
+        color={color}
+        loading={btnloader}
+        // cssOverride={override}
+        size={25}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      /> : <span> Login</span>}</button>
+       <h5
+                style={{
+                  color: "red",
+                  margin: "5px 2px 5px 4px",
+                  display: "none",
+                }}
+                id="messagetext"
+              >
+                Please enter valid credentials
+              </h5>
            <p className={styles.or}>Or</p>
           <button className={styles.signup_btn} onClick={()=>{setsignup(true)}} >Sign up</button>
            </div>

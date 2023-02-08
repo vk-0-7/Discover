@@ -5,6 +5,8 @@
 // }
 
 import React, { useEffect ,useState} from 'react';
+import {Provider} from 'react-redux'
+import store from './redux/store'
 import '../styles/globals.css'
 import Script from 'next/script'
 import TagManager from 'react-gtm-module';
@@ -33,9 +35,9 @@ s0.parentNode.insertBefore(s1,s0);
 
   }, []);
   return(<>
-   <MyContext.Provider value={{ globalState, setGlobalState }}>
+   <Provider store={store}>
             <Component {...pageProps} />
-        </MyContext.Provider>
+        </Provider>
     </>
     )
 }

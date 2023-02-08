@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {useRouter} from 'next/router'
 import Link from "next/link";
 import Navbar1 from "../components/navbar1";
 import Footer from "../components/footer";
@@ -19,11 +20,12 @@ import Koo from "../icons/Koo.svg";
 import Moj from "../icons/Moj.svg";
 import performance from "../icons/performance.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import {useSelector} from 'react-redux'
+import { faHourglass1, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 // import Instagram from "@fortawesome/free-brands-svg-icons/faInstagram";
 import axios from "axios";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const obj = {
   Facebook,
@@ -38,23 +40,60 @@ const obj = {
   Moj,
 };
 
-export const getServerSideProps = async () => {
+
+
+
+const Dashboard = () => {
+    const router=useRouter();
+
+    const [color,setColor] =useState("#000000")
+   const [data,setData] =useState([])
+   const [show, setShow] = useState(false);
+   
+   var {email,password}=useSelector(state=>state.user) 
+   console.log(email,password)
+ 
+
+ 
+
+
+  const fetchdata=async()=>{
+    console.log(email)
+   
+    try{
+      const res=await axios.get('https://backend.discoverinfluencer.in/user/all')
+      const data=await res.data.users
+      const userdata= data.filter((val)=>{
+        return val.email==email
+        
+      })
+      setData(userdata[0])
+      setShow(true)
+    }
+    catch(error){
+      console.log("error fetching all data" ,error.message)
+    }
+    // console.log(userdata)
+    
+    
+  }
+
+  useEffect(()=>{
+    fetchdata();
+  },[])
   
   
-  const data = await fetch(
-    `https://backend.discoverinfluencer.in/home/get_influencer_username/vivek`
-  );
-  const alldata = await data.json();
+    
+   const handleEditProfile=()=>{
+        router.push('/editprofile')
+   }
 
-  return {
-    props: {
-      data: alldata || null,
-    },
-  };
-};
 
-const Dashboard = ({ data }) => {
-  const [show, setShow] = useState(false);
+  
+
+
+
+
 
   const showinfo = () => {
     document.getElementById("information").style.visibility = "visible";
@@ -64,29 +103,33 @@ const Dashboard = ({ data }) => {
   };
 
   useEffect(() => {
-    if (!data.user[0].numberVisibleToPremium) {
+    if (!data.numberVisibleToPremium && show) {
       document.getElementById("num").style.color = "transparent";
       document.getElementById("num").style.textShadow = "0 0 6px rgb(0, 0, 0)";
     }
-    if (!data.user[0].showEmailToPremium) {
+    if (!data.showEmailToPremium && show) {
       document.getElementById("eml").style.color = "transparent";
       document.getElementById("eml").style.textShadow = "0 0 6px rgb(0, 0, 0)";
     }
   }, []);
 
-  const datas = data.user[0];
-  console.log(datas);
-
-  const language = datas.language;
-  const category = datas.category;
-  const intrests = datas.intrests;
-  const dob = datas.dateofBirth;
-  const brands = datas.prevBrands;
-  const URLs = datas.socialURLs[0];
-  const services = datas.socialServices;
+ 
+ if(show){
+  var language = data.language;
+   console.log(language)
+  var category = data.category;
+  var intrests = data.intrests;
+  var dob = data.dateofBirth;
+  // console.log(typeof dob)
+  const brands = data.prevBrands;
+    if(data.socialURLs)
+  {  var URLs = data.socialURLs[0];
+   console.log(URLs)}
+   if(data.socialServices){
+  var services = data.socialServices;}
   var today = new Date();
   const year = today.getFullYear();
-  const arr = dob.split("-");
+  if(dob){const arr = dob.split("-")
   var age = year - arr[0];
   const month = today.getMonth() + 1;
   const date = today.getDate();
@@ -97,19 +140,24 @@ const Dashboard = ({ data }) => {
       age = age - 1;
     }
   }
-
+}
+ 
+}
   return (
     <>
-      <Navbar1 />
+   
+
+     
+      { show ? <div> <div>  <Navbar1 /></div> 
       <div className={styles.leftBox}>
         <div className={styles.username}>
-          <p>{datas.username}</p>
+          <p>{data.username}</p>
         </div>
 
         <div className={styles.userImage}>
           <Image
             className={styles.Image}
-            src={datas.profilePic}
+            src={data.profilePic}
             width="400"
             height="400"
           ></Image>
@@ -131,10 +179,10 @@ const Dashboard = ({ data }) => {
 
           <div className={styles.number}>
             <h4> Contact Number: </h4>
-            <h3 id="num">{datas.phoneNumber} </h3>
+            <h3 id="num">{data.phoneNumber} </h3>
           </div>
           <div className={styles.email}>
-            <h4> Contact Email:</h4> <h3 id="eml"> {datas.email}</h3>
+            <h4> Contact Email:</h4> <h3 id="eml"> {data.email}</h3>
           </div>
         </div>
       </div>
@@ -142,20 +190,20 @@ const Dashboard = ({ data }) => {
       <div className={styles.rightBox}>
 
       <div className={styles.editprofile}>
-          <button>
+          <button onClick={handleEditProfile}>
             
             <p> Edit Profile </p>
           </button>
         </div>
 
-        <div className={styles.name}>
+       <div className={styles.name}>
           <p>
-            {datas.name} , {age}{" "}
+            {data.name} , {age}{" "}
           </p>{" "}
-        </div>
+        </div> 
         <div className={styles.city}>
-          <p>{datas.currentCity}</p>{" "}
-        </div>
+          <p>{data.currentCity}</p>{" "}
+        </div> 
         <div className={styles.icons}>
           {Object.entries(URLs).map(([key, value]) => (
             <button key={key}>
@@ -228,21 +276,20 @@ const Dashboard = ({ data }) => {
             );
           })}
         </div>
-        {/* { (brands==undefined) && 
-             <div className={styles.experience}>  <h3> Experience</h3> 
-             { brands.map((val,ind)=>{
-                   <h3 key={ind}> {val}  </h3>
-             })
-           
-            }
-
-    </div>} */}
+       
       </div>
 
       <div className={styles.footer}>
         {" "}
         <Footer />{" "}
-      </div>
+      </div> </div> : <div style={{position:"absolute",top:"50%" ,left:"50%" ,transform:"translate(-50%,-50%)"}}><ClipLoader
+        color={color}
+        // loading={btnloader}
+        // cssOverride={override}
+        size={80}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      /></div>}
     </>
   );
 };
