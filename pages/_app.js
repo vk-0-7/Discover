@@ -6,7 +6,7 @@
 
 import React, { useEffect ,useState} from 'react';
 import {Provider} from 'react-redux'
-import store from './redux/store'
+import store from '../redux/store'
 import '../styles/globals.css'
 import Script from 'next/script'
 import TagManager from 'react-gtm-module';
